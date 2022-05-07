@@ -1,0 +1,186 @@
+﻿# Host: localhost:3308  (Version 8.0.20)
+# Date: 2020-11-21 02:31:56
+# Generator: MySQL-Front 6.1  (Build 1.26)
+
+
+#
+# Structure for table "admin"
+#
+
+CREATE TABLE `admin` (
+  `id` int NOT NULL COMMENT '管理员',
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '用户名',
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '密码',
+  `name` varchar(255) DEFAULT NULL COMMENT '名字',
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '手机',
+  `age` int DEFAULT NULL COMMENT '年龄',
+  `sex` int DEFAULT NULL COMMENT '性别',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+
+#
+# Data for table "admin"
+#
+
+INSERT INTO `admin` VALUES (1,'admin','123456','王二虎','17805054371',33,0);
+
+#
+# Structure for table "building"
+#
+
+CREATE TABLE `building` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `type` int DEFAULT NULL COMMENT '0：电梯；1：楼梯',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+
+#
+# Data for table "building"
+#
+
+INSERT INTO `building` VALUES (1,'A',0),(2,'B',0),(3,'C',1),(4,'D',1);
+
+#
+# Structure for table "room"
+#
+
+CREATE TABLE `room` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '房屋名称',
+  `area` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '房屋面积',
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '是否为空',
+  `building_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `building` (`building_id`) USING BTREE,
+  CONSTRAINT `room_ibfk_1` FOREIGN KEY (`building_id`) REFERENCES `building` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB AUTO_INCREMENT=148 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+
+#
+# Data for table "room"
+#
+
+INSERT INTO `room` VALUES (50,'101','97','1',1),(51,'102','96','1',1),(52,'201','96','1',1),(53,'202','96','1',1),(54,'301','96','1',1),(55,'302','96','1',1),(56,'401','96','1',1),(57,'402','96','0',1),(58,'501','96','0',1),(59,'502','96','0',1),(60,'601','96','0',1),(61,'602','96','0',1),(62,'101','96','0',2),(63,'102','96','0',2),(64,'201','96','0',2),(65,'202','96','0',2),(66,'301','96','0',2),(67,'302','96','0',2),(68,'401','96','0',2),(69,'402','96','0',2),(70,'501','96','0',2),(71,'502','96','0',2),(72,'601','96','0',2),(73,'602','96','0',2),(74,'101','96','0',3),(75,'102','96','0',3),(76,'201','96','0',3),(77,'202','96','0',3),(78,'301','96','0',3),(79,'302','96','0',3),(80,'401','96','0',3),(81,'402','96','0',3),(82,'501','96','0',3),(83,'502','96','0',3),(84,'601','96','0',3),(85,'602','96','0',3),(86,'101','96','0',4),(87,'102','96','0',4),(88,'201','96','0',4),(89,'202','96','0',4),(90,'301','96','0',4),(91,'302','96','0',4),(92,'401','96','0',4),(93,'402','96','0',4),(94,'501','96','0',4),(95,'502','96','0',4),(96,'601','96','0',4),(97,'602','96','0',4);
+
+#
+# Structure for table "tousu"
+#
+
+CREATE TABLE `tousu` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  `status` int DEFAULT NULL,
+  `time` datetime DEFAULT NULL,
+  `result` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `6` (`user_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+
+#
+# Data for table "tousu"
+#
+
+INSERT INTO `tousu` VALUES (1,'测试1',1,1,'2020-03-03 03:34:48','已经解决了'),(2,'测试2',2,1,'2020-03-03 03:34:48','213e131'),(3,'测试3',3,0,'2020-03-03 03:34:48',NULL),(4,'测试4',4,1,'2020-03-03 03:34:48',NULL),(5,'测试5',5,1,'2020-03-03 03:34:48',NULL),(6,'测试6',6,1,'2020-03-03 03:34:48',NULL),(7,'测试7',7,1,'2020-03-03 03:34:48',NULL),(8,'测试8',8,1,'2020-03-03 03:34:48',NULL),(9,'测试9',9,1,'2020-03-03 03:34:48',NULL),(10,'测试10',10,1,'2020-03-03 03:34:48',NULL),(11,'测试11',11,1,'2020-03-03 03:34:48',NULL),(12,'测试12',12,1,'2020-03-03 03:34:48',NULL),(13,'测试13',13,1,'2020-03-03 03:34:48',NULL),(14,'测试14',14,1,'2020-03-03 03:34:48',NULL),(15,'测试15',15,1,'2020-03-03 03:34:48',NULL),(16,'测试16',16,1,'2020-03-03 03:34:48',NULL),(17,'测试17',17,1,'2020-03-03 03:34:48',NULL),(18,'测试18',18,1,'2020-03-03 03:34:48',NULL),(19,'测试19',19,1,'2020-03-03 03:34:48',NULL),(20,'测试20',20,1,'2020-03-03 03:34:48',NULL),(21,'测试21',21,1,'2020-03-03 03:34:48',NULL),(22,'测试22',22,1,'2020-03-03 03:34:48',NULL),(23,'测试23',23,1,'2020-03-03 03:34:48',NULL),(24,'测试24',24,1,'2020-03-03 03:34:48',NULL),(25,'测试25',25,1,'2020-03-03 03:34:48',NULL),(26,'测试26',26,1,'2020-03-03 03:34:48',NULL),(27,'测试27',27,1,'2020-03-03 03:34:48',NULL),(28,'测试28',28,1,'2020-03-03 03:34:48',NULL),(29,'测试29',29,1,'2020-03-03 03:34:48',NULL),(30,'测试30',30,1,'2020-03-03 03:34:48',NULL),(31,'测试31',31,1,'2020-03-03 03:34:48',NULL),(32,'测试32',32,1,'2020-03-03 03:34:48',NULL),(33,'测试33',33,1,'2020-03-03 03:34:48',NULL),(34,'测试34',34,1,'2020-03-03 03:34:48',NULL),(35,'测试35',35,1,'2020-03-03 03:34:48',NULL),(36,'测试36',36,1,'2020-03-03 03:34:48',NULL),(37,'测试37',37,1,'2020-03-03 03:34:48',NULL),(38,'测试38',38,1,'2020-03-03 03:34:48',NULL),(39,'测试39',39,1,'2020-03-03 03:34:48',NULL),(40,'测试40',40,1,'2020-03-03 03:34:48',NULL),(42,'我要投诉！！',1,NULL,NULL,NULL);
+
+#
+# Structure for table "user"
+#
+
+CREATE TABLE `user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '用户名',
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '密码',
+  `user_id` varchar(60) NOT NULL COMMENT '身份证',
+  `name` varchar(255) DEFAULT NULL COMMENT '姓名',
+  `sex` int DEFAULT NULL COMMENT '性别',
+  `work` varchar(60) DEFAULT NULL COMMENT '工作单位',
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '手机号',
+  `family` int DEFAULT NULL COMMENT '家庭人口',
+  PRIMARY KEY (`id`,`phone`,`user_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+
+#
+# Data for table "user"
+#
+
+INSERT INTO `user` VALUES (1,'1','123456','412421197012214321','张三',1,'腾讯','17805052221',3),(2,'2','123456','412421197012214322',NULL,0,NULL,'17805052222',NULL),(3,'3','123456','412421197012214323',NULL,0,NULL,'17805052223',NULL),(4,'4','123456','412421197012214324',NULL,0,NULL,'17805052224',NULL),(5,'5','123456','412421197012214325',NULL,0,NULL,'17805052225',NULL),(6,'6','123456','412421197012214326',NULL,0,NULL,'17805052226',NULL),(7,'7','123456','412421197012214327',NULL,0,NULL,'17805052227',NULL),(8,'8','123456','412421197012214328',NULL,0,NULL,'17805052228',NULL),(9,'9','123456','412421197012214329',NULL,0,NULL,'17805052229',NULL),(10,'10','123456','412421197012214330',NULL,0,NULL,'17805051110',NULL),(11,'11','123456','412421197012214331',NULL,0,NULL,'17805051111',NULL),(12,'12','123456','412421197012214332',NULL,0,NULL,'17805051112',NULL),(13,'13','123456','412421197012214333',NULL,0,NULL,'17805051113',NULL),(14,'14','123456','412421197012214334',NULL,0,NULL,'17805051114',NULL),(15,'15','123456','412421197012214335',NULL,0,NULL,'17805051115',NULL),(16,'16','123456','412421197012214336',NULL,0,NULL,'17805051116',NULL),(17,'17','123456','412421197012214337',NULL,0,NULL,'17805051117',NULL),(18,'18','123456','412421197012214338',NULL,0,NULL,'17805051118',NULL),(20,'20','123456','412421197012214340',NULL,0,NULL,'17805051120',NULL);
+
+#
+# Structure for table "repair"
+#
+
+CREATE TABLE `repair` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '是否解决',
+  `admin_name` varchar(255) DEFAULT NULL COMMENT '负责人名字',
+  `time` datetime DEFAULT NULL COMMENT '创建时间',
+  `result` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `5` (`user_id`) USING BTREE,
+  CONSTRAINT `repair_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+
+#
+# Data for table "repair"
+#
+
+INSERT INTO `repair` VALUES (1,'测试1',1,'0','王二虎','2020-03-03 03:34:40',NULL),(2,'测试2',1,'1',NULL,'2020-03-03 03:34:40','完美解决'),(3,'测试3',3,'1','王二虎','2020-03-03 03:34:40',NULL),(4,'测试4',4,'1',NULL,'2020-03-03 03:34:40',NULL),(5,'测试5',5,'1',NULL,'2020-03-03 03:34:40',NULL),(6,'测试6',6,'1',NULL,'2020-03-03 03:34:40',NULL),(7,'测试7',7,'1',NULL,'2020-03-03 03:34:40',NULL),(8,'测试8',8,'1',NULL,'2020-03-03 03:34:40',NULL),(9,'测试9',9,'1',NULL,'2020-03-03 03:34:40',NULL),(10,'测试10',10,'1',NULL,'2020-03-03 03:34:40',NULL),(11,'测试11',11,'1',NULL,'2020-03-03 03:34:40',NULL),(12,'测试12',12,'1',NULL,'2020-03-03 03:34:40',NULL),(13,'测试13',13,'1',NULL,'2020-03-03 03:34:40',NULL),(14,'测试14',14,'1',NULL,'2020-03-03 03:34:40',NULL),(15,'测试15',15,'1',NULL,'2020-03-03 03:34:40',NULL),(16,'测试16',16,'1',NULL,'2020-03-03 03:34:40',NULL),(17,'测试17',17,'1',NULL,'2020-03-03 03:34:40',NULL),(18,'测试18',18,'1',NULL,'2020-03-03 03:34:40',NULL),(19,'测试19',NULL,'1',NULL,'2020-03-03 03:34:40',NULL);
+
+#
+# Structure for table "user_payment"
+#
+
+CREATE TABLE `user_payment` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int DEFAULT NULL,
+  `value` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `time` datetime DEFAULT NULL,
+  `status` int DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `11` (`user_id`) USING BTREE,
+  CONSTRAINT `11` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+
+#
+# Data for table "user_payment"
+#
+
+INSERT INTO `user_payment` VALUES (1,1,'100','2020-03-04 05:47:03',1),(2,1,'1100','2020-03-04 07:49:42',1),(3,1,'100','2020-03-04 12:11:42',0),(4,3,'11','2020-11-16 16:51:36',1);
+
+#
+# Structure for table "user_room"
+#
+
+CREATE TABLE `user_room` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int DEFAULT NULL COMMENT '用户',
+  `room_id` int DEFAULT NULL COMMENT '房屋',
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `3` (`user_id`) USING BTREE,
+  KEY `4` (`room_id`) USING BTREE,
+  CONSTRAINT `4` FOREIGN KEY (`room_id`) REFERENCES `room` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `user_room_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+
+#
+# Data for table "user_room"
+#
+
+INSERT INTO `user_room` VALUES (1,1,50);
+
+#
+# Procedure "add_gu_memory"
+#
+
+CREATE PROCEDURE `add_gu_memory`()
+BEGIN  
+  DECLARE i INT DEFAULT 1;
+	SET i = 2;
+    WHILE (i <= 60 ) DO
+			INSERT into `car`(`name`,`type`,`status` ) VALUEs (CONCAT('车位',i),0,0);
+			set i=i+1;
+    END WHILE;
+END;
