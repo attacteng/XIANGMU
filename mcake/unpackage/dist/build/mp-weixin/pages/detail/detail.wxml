@@ -1,0 +1,1 @@
+<view>商品详情<button type="primary" data-event-opts="{{[['tap',[['handleBack',['$event']]]]]}}" bindtap="__e">返回上一页</button><button type="default" data-event-opts="{{[['tap',[['handleMy',['$event']]]]]}}" bindtap="__e">访问个人中心</button></view>
